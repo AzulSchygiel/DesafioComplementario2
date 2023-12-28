@@ -6,7 +6,7 @@ const swaggerOpciones = {
     definition:{
         openapi:"3.0.1",
         info:{
-            title:"DOCUMENTACIÓN API PARA APP DE MASCOTAS",
+            title:"DOCUMENTACIÓN API PARA APP DE ROPA",
             version:"1.0.0",
             description:"Endpoints de la API de autenticación."
         },
