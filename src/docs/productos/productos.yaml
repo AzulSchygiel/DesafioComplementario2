@@ -1,1 +1,139 @@
+paths:
+  /api/productos/:
+    get:
+      summary: Todos los productos
+      tags:
+        - Productos
+      responses:
+        "200":
+          description: Obtención de productos correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/productos"
+        "500":
+          description: Problemas en el servidor
 
+  /api/productos/{uid}:
+  get:
+      summary: Información del producto buscado
+      tags:
+        - Productos
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: Producto buscado
+          schema:
+            $type: string
+      responses:
+        "200":
+          description: Obtención del producto correctamente
+          content:
+            application/json:
+              schema:
+                  $ref: "#components/schemas/Productos"
+        "500":
+          description: Problemas en el servidor
+
+  put:
+  summary: Actualización del producto
+      tags:
+        - Productos
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: ID del producto para actualizar
+          schema:
+            $type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/createUpdateProducto"
+      responses:
+        "200":
+          description: Actualización del producto correctamente
+          content:
+            application/json:
+              schema:
+                  type: object
+                  properties:
+                    status:
+                      type: object
+                      properties:
+                        status:
+                          type: string
+                        message:
+                          type: string
+        "500":
+          description: Problemas en el servidor
+
+  delete:
+    summary: Eliminar producto
+      tags:
+        - Productos
+      responses:
+        "200":
+          description: Actualización del producto correctamente
+          content:
+            application/json:
+              schema:
+                  type: object
+                  properties:
+                    status:
+                      type: object
+                      properties:
+                        status:
+                          type: string
+                        message:
+                          type: string
+        "500":
+          description: Problemas en el servidor
+
+components:
+  schemas:
+    Producto:  
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: ID generado por la Base de Datos
+        name:
+          type: string
+          description: Nombre del producto
+        waist:
+          type: number
+          description: Talla del producto
+        color:
+          type: string
+          description: Color del producto
+
+updateSuccess:
+  type: object
+  properties:
+    status:
+      type: string
+    message:
+      type: string
+    example:
+      status: success
+      message: Producto actualizado
+
+requestBodies:
+  createUpdateProducto:
+    type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del producto
+        waist:
+          type: number
+          description: Talla del producto
+        color:
+          type: string
+          description: Color del producto
