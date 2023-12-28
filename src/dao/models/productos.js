@@ -1,19 +1,18 @@
 import mongoose from "mongoose";
 
-
-const collection = "Adoptions";
+const collection = "Productos";
 
 const schema = new mongoose.Schema({
     owner:{
         type:mongoose.SchemaTypes.ObjectId,
         ref:'Users'
     },
-    pet:{
+    ropa:{
         type:mongoose.SchemaTypes.ObjectId,
-        ref:'Pets'
+        ref:'Ropa'
     }
 })
 
-const adoptionModel = mongoose.model(collection,schema);
+const productosModel = mongoose.model(collection,schema);
 
-export default adoptionModel;
+export default productosModel;
