@@ -1,21 +1,17 @@
 import mongoose from 'mongoose';
 
-const collection = 'Pets';
+const collection = 'Ropa';
 
 const schema = new mongoose.Schema({
     name:{
         type:String,
         required:true,
     },
-    specie:{
-        type:String,
+    wist:{
+        type:Number,
         required:true
     },
-    birthDate:Date,
-    adopted:{
-        type:Boolean,
-        default:false
-    },
+    color:String,
     owner:{
         type:mongoose.SchemaTypes.ObjectId,
         ref:'Users'
@@ -23,6 +19,6 @@ const schema = new mongoose.Schema({
     image:String
 })
 
-const petModel = mongoose.model(collection,schema);
+const ropaModel = mongoose.model(collection,schema);
 
-export default petModel;
+export default ropaModel;
